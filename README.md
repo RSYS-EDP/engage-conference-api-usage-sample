@@ -36,5 +36,5 @@ Eg:
 ## How to test/use:
 By default sample application runs on localhost with 8000 port. You can access this application using `http://localhost:8000` or `http://Your_System_IP:8000`.\
 To test any specific API you can use any 3rd party REST API client to verify the APIs.\
-Eg: `http://localhost:8000/:ac_id/room` , here `:ac_id` represents your account-id, you can replace with your actual account-id in the URL and also you need to pass valid apikey in headers.\
+Eg: `http://localhost:8000/accounts/:ac_id/room` , here `:ac_id` represents your account-id, you can replace with your actual account-id in the URL and also you need to pass valid apikey in headers.\
 On successful execution, you will get list of rooms created for the specified account-id as response.

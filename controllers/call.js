@@ -3,6 +3,7 @@ const BASE_URL =
   process.env.CONFERENCE_API_BASE_URL || "https://api.esmp-radisys.com/api/v1";
 ConferenceAPI.OpenAPI.BASE = BASE_URL;
 
+//Make call API
 const makeCall = async (req, res) => {
   let token;
   try {
@@ -29,6 +30,7 @@ const makeCall = async (req, res) => {
   }
 };
 
+// Get all call records API
 const getMultipleCallRecords = async (req, res) => {
   let token;
   try {
@@ -64,6 +66,8 @@ const getMultipleCallRecords = async (req, res) => {
     return res.status(400).send(err.body);
   }
 };
+
+// Get call record by callId API
 const getCallRecord = async (req, res) => {
   let token;
   try {
@@ -90,7 +94,8 @@ const getCallRecord = async (req, res) => {
   }
 };
 
-const updateCall = async (req, res) => {
+// update call record by callId using put method
+const updateCallPut = async (req, res) => {
   let token;
   try {
     token = req.header("apikey");
@@ -104,7 +109,7 @@ const updateCall = async (req, res) => {
   };
 
   try {
-    const data = await ConferenceAPI.CallService.putCallService(
+    const data = await ConferenceAPI.CallService.updateCallRecordByCallIdPutMethod(
       req.params.ac_id,
       req.params.call_id,
       req.body
@@ -117,7 +122,8 @@ const updateCall = async (req, res) => {
   }
 };
 
-const postCall = async (req, res) => {
+// update call record by callId using post method
+const updateCallPost = async (req, res) => {
   console.log("posterror");
   let token;
   console.log("logcheck1");
@@ -133,7 +139,7 @@ const postCall = async (req, res) => {
   };
 
   try {
-    const data = await ConferenceAPI.CallService.postCallService(
+    const data = await ConferenceAPI.CallService.updateCallRecordByCallIdPostMethod(
       req.params.ac_id,
       req.params.call_id,
       req.body
@@ -150,6 +156,6 @@ module.exports = {
   makeCall,
   getMultipleCallRecords,
   getCallRecord,
-  updateCall,
-  postCall,
+  updateCallPut,
+  updateCallPost,
 };

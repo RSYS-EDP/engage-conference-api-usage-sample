@@ -22,7 +22,7 @@ const createRoom = async (req, res) => {
   try {
       //SDK API is called
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.postMultipartyConferenceCallService(
+      await ConferenceAPI.MultipartyConferenceCallService.createRoom(
         req.params.ac_id,
         req.body
       );
@@ -34,7 +34,7 @@ const createRoom = async (req, res) => {
 };
 
 
-// Get Room API Call
+// Get Room record by RoomID API Call
 const getRoom = async (req, res) => {
   let token;
   try {
@@ -50,7 +50,7 @@ const getRoom = async (req, res) => {
 
   try {
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.getMultipartyConferenceCallService1(
+      await ConferenceAPI.MultipartyConferenceCallService.getRoomRecordByRoomId(
         req.params.ac_id,
         req.params.rm_id
       );
@@ -76,7 +76,7 @@ const getAllRoom = async (req, res) => {
   };
   try {
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.getMultipartyConferenceCallService(
+      await ConferenceAPI.MultipartyConferenceCallService.getMultipleRoomRecords(
         req.params.ac_id,
         req.query.RoomName,
         req.query.CreatedAt,
@@ -93,7 +93,7 @@ const getAllRoom = async (req, res) => {
 };
 
 
-// Delete Room API Call
+// Delete Room by RoomID API Call
 const deleteRoom = async (req, res) => {
   let token;
   try {
@@ -108,7 +108,7 @@ const deleteRoom = async (req, res) => {
   };
   try {
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.deleteMultipartyConferenceCallService(
+      await ConferenceAPI.MultipartyConferenceCallService.deleteRoom(
         req.params.ac_id,
         req.params.rm_id
       );
@@ -135,7 +135,7 @@ const joinRoom = async (req, res) => {
   };
   try {
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.postMultipartyConferenceCallService1(
+      await ConferenceAPI.MultipartyConferenceCallService.joinRoom(
         req.params.ac_id,
         req.params.rm_id,
         req.body
@@ -148,7 +148,7 @@ const joinRoom = async (req, res) => {
 };
 
 
-// Play Room API Call
+// Play announcement into the Room API Call
 const playRoom = async (req, res) => {
   let token;
   try {
@@ -164,7 +164,7 @@ const playRoom = async (req, res) => {
 
   try {
     const data =
-      await ConferenceAPI.MultipartyConferenceCallService.postMultipartyConferenceCallService2(
+      await ConferenceAPI.MultipartyConferenceCallService.playAnnouncementInRoom(
         req.params.ac_id,
         req.params.rm_id,
         req.body

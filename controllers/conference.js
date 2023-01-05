@@ -148,7 +148,7 @@ const joinRoom = async (req, res) => {
 };
 
 
-// Play aannouncement into the Room API Call
+// Play announcement into the Room API Call
 const playRoom = async (req, res) => {
   let token;
   try {

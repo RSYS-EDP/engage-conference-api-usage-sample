@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router();
 // importing conference API methods
 const conferenceController = require('../controllers/conference')
-const callController = require("../controllers/call")
 
 
 router.get('/:ac_id/room', conferenceController.getAllRoom);

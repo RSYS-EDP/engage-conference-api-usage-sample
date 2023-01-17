@@ -12,7 +12,7 @@ Eg:
      
 
 ## Base_URL Configuration: 
-By default Base_URL="https://api.esmp-radisys.com/api/v1" is being set internally if no URL being configured while running the app. To configure the different URL, either change the base_url  at controllers -> conference.js or set URL to environment (CONFERENCE_API_BASE_URL) while running the app. `set CONFERENCE_API_BASE_URL=<your_URL>&&node server.js`
+By default Base_URL="https://api.esmp-radisys.com/api/v1" is being set internally if no URL being configured while running the app. To configure the different URL, either change the base_url  at controllers -> conference.js and controllers -> call.js  or set URL to environment (CONFERENCE_API_BASE_URL) while running the app. `set CONFERENCE_API_BASE_URL=<your_URL>&&node server.js`
      
 Eg: 
      `set CONFERENCE_API_BASE_URL="https://dev.testapi.com"&&node server.js`
@@ -30,11 +30,32 @@ Eg:
 
 		react_client_app> node server.js
 
-*Note: use "NODE_TLS_REJECT_UNAUTHORIZED='0' node server.js", incase of any certificate issues while running in the local.* 
+*Note: use "NODE_TLS_REJECT_UNAUTHORIZED='0' node server.js", incase of any certificate issues while running in the local. This command is effective in linux based terminals, suggestively `Git-bash`* 
 
 
 ## How to test/use:
-By default sample application runs on localhost with 8000 port. You can access this application using `http://localhost:8000` or `http://Your_System_IP:8000`.\
-To test any specific API you can use any 3rd party REST API client to verify the APIs.\
-Eg: `http://localhost:8000/accounts/:ac_id/room` , here `:ac_id` represents your account-id, you can replace with your actual account-id in the URL and also you need to pass valid apikey in headers.\
+By default sample application runs on localhost with 8000 port. You can access this application using `http://localhost:8000` or `http://Your_System_IP:8000`. To test any specific API you can use any 3rd party REST API client to verify the APIs.
+
+Eg: `http://localhost:8000/accounts/:ac_id/room`\
+here `:ac_id` represents your account-id, you can replace with your actual account-id in the URL and also you need to pass valid apikey in headers.\
 On successful execution, you will get list of rooms created for the specified account-id as response.
+
+Eg: Following CRUL can be used for creating room
+```
+curl --location --request POST 'http://localhost:8000/accounts/:ac_id/room' \
+--header 'Content-Type: application/json' \
+--header 'Accept: */*' \
+--header 'apikey: <API Key>' \
+--data-raw '{
+  "RoomName": "MyRoom123",
+  "RoomType": "Audio",
+  "CallerId": "9876543211",
+  "DialInPhone": "98765432111",
+  "GenerateDialInCode": "Yes",
+  "StatusCallbackEvent": "JOIN,UNJOIN",
+  "Method": "POST",
+  "StatusCallbackUrl": "https://YOUR_PUBLIC_IP/YOUR_CALLBACK",
+  "MaxActiveRoomDuration": 2
+}'
+```
+*here `:ac_id` represents your account-id, you can replace with your actual account-id in the URL and also you need to pass valid apikey in headers.*
